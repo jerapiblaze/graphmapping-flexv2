@@ -1,94 +1,7 @@
-# 5 slices
----
-PROBLEM_SETNAME: "C1_ABI_5"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_1_@1@1"
-  SFCCOUNT: 5
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C3_ABI_5"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_3_@1@1"
-  SFCCOUNT: 5
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C13_ABI_5"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_1_3_@1@1"
-  SFCCOUNT: 5
-  KEEPSFC: 0
-...
-
-# 10 slices
----
-PROBLEM_SETNAME: "C1_ABI_10"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_1_@1@1"
-  SFCCOUNT: 10
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C3_ABI_10"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_3_@1@1"
-  SFCCOUNT: 10
-  KEEPSFC: 0
-...
+# 10 slices - abilene
 ---
 PROBLEM_SETNAME: "C13_ABI_10"
-PROBLEM_COUNT: 100
+PROBLEM_COUNT: 10
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
@@ -103,48 +16,13 @@ SFCSET:
   SFCCOUNT: 10
   KEEPSFC: 0
 ...
-
-# 15 slices
+# 10 slices - polsa
 ---
-PROBLEM_SETNAME: "C1_ABI_15"
-PROBLEM_COUNT: 100
+PROBLEM_SETNAME: "C13_POL_10"
+PROBLEM_COUNT: 10
 KEEPPHY: 1
 PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_1_@1@1"
-  SFCCOUNT: 15
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C3_ABI_15"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_3_@1@1"
-  SFCCOUNT: 15
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C13_ABI_15"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  MODE: "FROMGML@./data/__internals__/SndLib/polska.gml"
   NODE:
     CPU: 20.0000001
     MEM: 0
@@ -153,51 +31,16 @@ PHY:
     BW: 20.0000001
 SFCSET:
   MODE: "flex@_1_3_@1@1"
-  SFCCOUNT: 15
+  SFCCOUNT: 10
   KEEPSFC: 0
 ...
-
-# 20 slices
+# 10 slices - atlanta
 ---
-PROBLEM_SETNAME: "C1_ABI_20"
-PROBLEM_COUNT: 100
+PROBLEM_SETNAME: "C13_ATL_10"
+PROBLEM_COUNT: 10
 KEEPPHY: 1
 PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_1_@1@1"
-  SFCCOUNT: 20
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C3_ABI_20"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
-  NODE:
-    CPU: 20.0000001
-    MEM: 0
-    STO: 0
-  LINK:
-    BW: 20.0000001
-SFCSET:
-  MODE: "flex@_3_@1@1"
-  SFCCOUNT: 20
-  KEEPSFC: 0
-...
----
-PROBLEM_SETNAME: "C13_ABI_20"
-PROBLEM_COUNT: 100
-KEEPPHY: 1
-PHY:
-  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  MODE: "FROMGML@./data/__internals__/SndLib/atlanta.gml"
   NODE:
     CPU: 20.0000001
     MEM: 0
@@ -206,6 +49,42 @@ PHY:
     BW: 20.0000001
 SFCSET:
   MODE: "flex@_1_3_@1@1"
-  SFCCOUNT: 20
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+# 30 slices - cost266
+---
+PROBLEM_SETNAME: "C13_COS_30"
+PROBLEM_COUNT: 10
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/cost266.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 30
+  KEEPSFC: 0
+...
+# 30 slices - pioro40
+---
+PROBLEM_SETNAME: "C13_PIO_30"
+PROBLEM_COUNT: 10
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 30
   KEEPSFC: 0
 ...

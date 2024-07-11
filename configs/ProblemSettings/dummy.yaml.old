@@ -1,0 +1,211 @@
+# 5 slices
+---
+PROBLEM_SETNAME: "C1_ABI_5"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 5
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C3_ABI_5"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_3_@1@1"
+  SFCCOUNT: 5
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C13_ABI_5"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 5
+  KEEPSFC: 0
+...
+
+# 10 slices
+---
+PROBLEM_SETNAME: "C1_ABI_10"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C3_ABI_10"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_3_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C13_ABI_10"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+
+# 15 slices
+---
+PROBLEM_SETNAME: "C1_ABI_15"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 15
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C3_ABI_15"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_3_@1@1"
+  SFCCOUNT: 15
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C13_ABI_15"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 15
+  KEEPSFC: 0
+...
+
+# 20 slices
+---
+PROBLEM_SETNAME: "C1_ABI_20"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C3_ABI_20"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_3_@1@1"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...
+---
+PROBLEM_SETNAME: "C13_ABI_20"
+PROBLEM_COUNT: 100
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_3_@1@1"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...
