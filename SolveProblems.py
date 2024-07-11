@@ -38,7 +38,7 @@ def Main(config: dict):
     problem_set = RecurseListDir(PROBLEM_SETPATH, ["*.pkl.gz"])
 
     SOLVER = str(config["SOLVER"]).split("@")
-    timelimit = config["TIMELIMIT"] if config["TIMELIMIT"] >= 0 else None
+    timelimit = config["TIMELIMIT"]
     ndigits = config["NDIGITS"]
     target = None
     args = ()
