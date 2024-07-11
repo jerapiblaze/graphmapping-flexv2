@@ -1,7 +1,7 @@
 # 10 slices - abilene
 ---
 PROBLEM_SETNAME: "C13_ABI_10"
-PROBLEM_COUNT: 10
+PROBLEM_COUNT: 1
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
@@ -19,7 +19,7 @@ SFCSET:
 # 10 slices - polsa
 ---
 PROBLEM_SETNAME: "C13_POL_10"
-PROBLEM_COUNT: 10
+PROBLEM_COUNT: 1
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/polska.gml"
@@ -37,7 +37,7 @@ SFCSET:
 # 10 slices - atlanta
 ---
 PROBLEM_SETNAME: "C13_ATL_10"
-PROBLEM_COUNT: 10
+PROBLEM_COUNT: 1
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/atlanta.gml"
@@ -55,7 +55,7 @@ SFCSET:
 # 30 slices - cost266
 ---
 PROBLEM_SETNAME: "C13_COS_30"
-PROBLEM_COUNT: 10
+PROBLEM_COUNT: 1
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/cost266.gml"
@@ -73,7 +73,7 @@ SFCSET:
 # 30 slices - pioro40
 ---
 PROBLEM_SETNAME: "C13_PIO_30"
-PROBLEM_COUNT: 10
+PROBLEM_COUNT: 1
 KEEPPHY: 1
 PHY:
   MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
