@@ -1,0 +1,90 @@
+# 10 slices - abilene
+---
+PROBLEM_SETNAME: "C1_ABI_10"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+# 10 slices - polsa
+---
+PROBLEM_SETNAME: "C1_POL_10"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/polska.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+# 10 slices - atlanta
+---
+PROBLEM_SETNAME: "C1_ATL_10"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/atlanta.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 10
+  KEEPSFC: 0
+...
+# 30 slices - cost266
+---
+PROBLEM_SETNAME: "C1_COS_30"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/cost266.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 30
+  KEEPSFC: 0
+...
+# 30 slices - pioro40
+---
+PROBLEM_SETNAME: "C1_PIO_30"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+  NODE:
+    CPU: 20.0000001
+    MEM: 0
+    STO: 0
+  LINK:
+    BW: 20.0000001
+SFCSET:
+  MODE: "flex@_1_@1@1"
+  SFCCOUNT: 30
+  KEEPSFC: 0
+...
