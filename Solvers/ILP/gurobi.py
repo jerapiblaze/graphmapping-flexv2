@@ -7,5 +7,6 @@ class Solver(ILPSolver):
         self.SOLVER = pulp.GUROBI_CMD(
             msg=verbose,
             timeLimit=timelimit,
-            logPath=logfile
+            logPath=logfile,
+            options=[("Heuristics", "0.25"), ("NodeLimit", "100000"), ("ConcurrentMIP", "4"), ("MIPGap", "2.5e-2")]
         )
