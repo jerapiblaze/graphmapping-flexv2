@@ -12,7 +12,7 @@ def Greedy(PHY:nx.DiGraph, SLICE_SET:list[nx.DiGraph], profiler:StopWatch, timel
     solution = dict()
     current_PHY = PHY
     for sfc in SLICE_SET:
-        if round(time.time() - start_time - timelimit) >= 0:
+        if not timelimit is None and round(time.time() - start_time - timelimit) >= 0:
             profiler.add_stop("TIME LIMIT REACHED")
             break
         s = SLICE_SET.index(sfc)
