@@ -86,10 +86,15 @@ def __mapSlice(_phy:nx.DiGraph, _sfc:nx.DiGraph) -> tuple[nx.DiGraph, list[tuple
         if (j is None):
             node_list = sorted(node_caps, key=node_caps.get, reverse=True)
             n = 0
-            while (node_list[n] in used_node) or (node_caps[n] < vnode_reqs[w]):
+            while not (node_list[n] in nx.neighbors(phy, i)) and (node_caps[n] < vnode_reqs[w]):
                 n += 1
                 if (n >= len(node_list)):
-                    n = -1
+                    n = 0
+                    while (node_list[n] in used_node) or (node_caps[n] < vnode_reqs[w]):
+                        n += 1
+                        if (n >= len(node_list)):
+                            n = -1
+                            break
                     break
             if n == -1:
                 return (_phy, None, None, {"isSuccess":False})
