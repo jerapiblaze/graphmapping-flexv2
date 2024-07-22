@@ -1,3 +1,4 @@
+import argparse
 import multiprocessing as mp
 import os
 import uuid
@@ -70,6 +71,9 @@ def MpWorker(queue: mp.Queue):
     exit()
 
 if __name__=="__main__":
-    config_list = ConfigParser("./configs/ProblemSettings/dummy.yaml")
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("-c", "--config", default="./configs/ProblemSettings/dummy.yaml")
+    args = argparser.parse_args()
+    config_list = ConfigParser(args.config)
     q = IterToQueue(config_list)
     MultiProcessing(MpWorker, (q,), 1)
