@@ -56,6 +56,7 @@ def __mapSlice(_phy:nx.DiGraph, _sfc:nx.DiGraph) -> tuple[nx.DiGraph, list[tuple
     used_node = []
     node_mappings = []
     link_mappings = []
+    nhops = 0
     
     vnode_reqs = nx.get_node_attributes(_sfc, "req")
     vlink_reqs = nx.get_edge_attributes(_sfc, "req")
@@ -119,7 +120,8 @@ def __mapSlice(_phy:nx.DiGraph, _sfc:nx.DiGraph) -> tuple[nx.DiGraph, list[tuple
             link_mappings.append((e, link))
             link_caps[link] -= vlink_reqs[e]
         nx.set_edge_attributes(phy, link_caps, "cap")
-    return phy, node_mappings, link_mappings, {"isSuccess":True, "nHops": len(links)}
+        nhops += len(links)
+    return phy, node_mappings, link_mappings, {"isSuccess":True, "nHops": nhops}
 
 def __getNodeMapping(node_mappings:list[tuple[int,int]], vnode:int) -> int|None:
     for nm in node_mappings:
