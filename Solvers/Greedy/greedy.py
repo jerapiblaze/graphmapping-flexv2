@@ -85,19 +85,26 @@ def __mapSlice(_phy:nx.DiGraph, _sfc:nx.DiGraph) -> tuple[nx.DiGraph, list[tuple
         # Map w if needed
         if (j is None):
             node_list = sorted(node_caps, key=node_caps.get, reverse=True)
+            # n = 0
+            # while (not node_list[n] in nx.neighbors(phy, i)) or (node_list[n] in used_node) or (node_caps[n] < vnode_reqs[w]):
+            #     n += 1
+            #     if (n >= len(node_list)):
+            #         n = 0
+            #         while (node_list[n] in used_node) or (node_caps[n] < vnode_reqs[w]):
+            #             n += 1
+            #             if (n >= len(node_list)):
+                            # return (_phy, None, None, {"isSuccess":False})
+            node_list = [n for n in node_list if not n in used_node and not node_caps[n] < vnode_reqs[w]]
+            if len(node_list) == 0:
+                return (_phy, None, None, {"isSuccess":False})
             n = 0
-            while not (node_list[n] in nx.neighbors(phy, i)) and (node_caps[n] < vnode_reqs[w]):
+            while (not node_list[n] in nx.neighbors(phy, i)):
                 n += 1
                 if (n >= len(node_list)):
                     n = 0
-                    while (node_list[n] in used_node) or (node_caps[n] < vnode_reqs[w]):
-                        n += 1
-                        if (n >= len(node_list)):
-                            n = -1
-                            break
                     break
-            if n == -1:
-                return (_phy, None, None, {"isSuccess":False})
+            # if n == -1:
+            #     return (_phy, None, None, {"isSuccess":False})
             j = node_list[n]
             used_node.append(j)
             node_caps[j] -= vnode_reqs[w]
