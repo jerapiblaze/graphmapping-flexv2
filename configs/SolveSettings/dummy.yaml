@@ -43,32 +43,32 @@ LOGPATH: "./data/logs"
 NDIGITS: 5
 ...
 
----
-PROBLEM_SETNAME: "C13_COS_30"
-SOLVER: "GREEDY"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
----
-PROBLEM_SETNAME: "C13_COS_30"
-SOLVER: "ILP@GUROBI"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
+# ---
+# PROBLEM_SETNAME: "C13_COS_30"
+# SOLVER: "GREEDY"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+# ---
+# PROBLEM_SETNAME: "C13_COS_30"
+# SOLVER: "ILP@GUROBI"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
 
----
-PROBLEM_SETNAME: "C13_PIO_30"
-SOLVER: "GREEDY"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
----
-PROBLEM_SETNAME: "C13_PIO_30"
-SOLVER: "ILP@GUROBI"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
+# ---
+# PROBLEM_SETNAME: "C13_PIO_30"
+# SOLVER: "GREEDY"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+# ---
+# PROBLEM_SETNAME: "C13_PIO_30"
+# SOLVER: "ILP@GUROBI"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
