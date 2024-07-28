@@ -114,7 +114,7 @@ def ConvertToIlp(prob:SliceMappingProblem) -> pulp.LpProblem:
             )
     # OBJECTIVE
     problem += (
-        - pulp.lpSum(
+        - GAMMA*pulp.lpSum(
             pi[s] for s in range(len(SLICES_SET))
         ) 
         + (1-GAMMA)*pulp.lpSum(
