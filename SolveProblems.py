@@ -30,6 +30,16 @@ def HeuristicsSolveMpWorker(queue: mp.Queue, Solver, solution_setpath: str, log_
         savepath = os.path.join(solution_setpath, f"{validated_problem.name}.pkl.gz")
         SaveProblem(savepath, validated_problem)
     exit()
+    
+def RLSolveMpWorker(queue: mp.Queue, Solver, checkpoint_path:str, solution_setpath: str, log_setpath: str, timelimit: int, ndigits: int):
+    while queue.qsize():
+        problem_path = queue.get()
+        model = Solver(problem=LoadProblem(problem_path), saved_agent_path=checkpoint_path, logpath=log_setpath, timelimit=timelimit)
+        solved_problem = model.Solve()
+        validated_problem = ValidateSolution(solved_problem, debug=True, ndigits=ndigits)
+        savepath = os.path.join(solution_setpath, f"{validated_problem.name}.pkl.gz")
+        SaveProblem(savepath, validated_problem)
+    exit()
 
 
 def Main(config: dict):
@@ -73,6 +83,15 @@ def Main(config: dict):
             LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
+        case "QL":
+            target=RLSolveMpWorker
+            from Solvers.QLearn import Solver
+            agentname = str(os.path.basename(SOLVER[1])).split(".")[0]
+            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@QL_{agentname}")
+            CleanDir(SOLUTION_SETPATH)
+            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@QL_{agentname}")
+            CleanDir(LOG_SETPATH)
+            args = (q, Solver, SOLVER[1], SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case _:
             raise Exception(f"[Invalid config] SOLVER={SOLVER[0]}")
 
