@@ -25,18 +25,21 @@ class Solver(SliceMappingSolver):
         self.__profiler__ = StopWatch(f"[qlearn] {self.problem.name}", verbose)
 
     def Solve(self,) -> SliceMappingProblem:
+        ####
         env = self.env
         agent = self.agent
         obs, info = self.env.reset()
         solver = QLearningSolver(agent, env)
-        
+        ####
         self.__profiler__.start()
         sol = {}
         sta = 0
         obj = 0
         tim = 0
         try:
-            sol, sol_time = solver.solve()
+            #####
+            sol = solver.solve()
+            #####
             obj = len([var for var in sol.keys() if str(var).startswith("pi") and sol[var] == 1])
             if obj == 0:
                 sta = 0

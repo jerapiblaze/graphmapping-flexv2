@@ -4,6 +4,7 @@ import networkx as nx
 import numpy as np
 import copy
 
+
 from QLearn.utils import extract_mapping_result, ConvertToILP
 from FlexSliceMappingProblem import SliceMappingProblem
 from FlexSliceMappingProblem.ilp import ConvertToIlp, VarInit
@@ -26,6 +27,8 @@ class RLen3(gym.Env):
         self.sol = dict()
         self.observation_space = gym.spaces.Discrete(n=self.num_sfcs + 1)
         self.action_space = gym.spaces.Discrete(3)
+        self.observation_space_size = self.num_sfcs
+        self.action_space_size = 3
         self.__is_truncated = False
     
     def reset(self):
@@ -70,11 +73,7 @@ class RLen3(gym.Env):
                 node_cap = self.__get_node_cap(phy_node)
                 
                 if node_cap and vnode_req:
-                    updated_cap = {
-                        'cpu': node_cap['cpu'] - vnode_req['cpu'],
-                        'memory': node_cap['memory'] - vnode_req['memory'],
-                        'storage': node_cap['storage'] - vnode_req['storage']
-                    }
+                    updated_cap = node_cap - vnode_req
                     nx.set_node_attributes(self.physical_graph_current, {phy_node: updated_cap}, "cap")
         
         for sfc_id, vlink in link_mapping.items():
@@ -83,15 +82,12 @@ class RLen3(gym.Env):
                 link_cap = self.__get_link_cap(phylink)
                 
                 if link_cap and vlink_req:
-                    updated_cap = {
-                        'bandwidth': link_cap['bandwidth'] - vlink_req['bandwidth']
-                    }
+                    updated_cap = link_cap - vlink_req
                     nx.set_edge_attributes(self.physical_graph_current, {phylink: updated_cap}, "cap")
                     
     def _get_action_detail(self, action):
         if action not in [0, 1]:
             return None  # Trả về None nếu hành động không hợp lệ
-        # print("current: ", self.sfc_order_current)
         for s_index in range(self.sfc_order_current, len(self.sfcs_list)):
             s = self.sfcs_list[s_index]
             if action < len(s):
@@ -183,7 +179,7 @@ class RLen3(gym.Env):
         new_solution = dict()
         info = {}
         is_last = self.__is_last_of_sfc()
-        # print("is last?: ", is_last)
+
             
         if (self.__is_reached_termination() or self.__is_truncated):
             reward = 0

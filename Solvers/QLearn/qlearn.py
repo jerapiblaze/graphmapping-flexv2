@@ -14,7 +14,7 @@ class QLearningSolver:
             self.agent.q_table = pickle.load(f)
 
     def solve(self):
-        start_time = time.time()
+
         terminated = False
         truncated = False
         obs, info = self.env.reset()
@@ -29,7 +29,5 @@ class QLearningSolver:
                 mapped_slices += 1
             obs = next_obs
 
-        end_time = time.time()
-        solution_time = end_time - start_time
         solution = self.env.render()
-        return solution, solution_time
+        return solution

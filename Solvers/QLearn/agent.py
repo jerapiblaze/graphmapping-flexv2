@@ -17,16 +17,18 @@ if IS_IPYTHON:
 plt.ion()
 
 class QLearningAgent:
-    def __init__(self, action_space, observation_space, learning_rate=0.1, discount_factor=0.99, epsilon=0.1, epsilon_min=0.01, epsilon_decay=0.995, epsilon_max=1.0):
+    def __init__(self, action_space, observation_space, state_space_size, action_space_size, learning_rate=0.1, discount_factor=0.99, epsilon=0.1, epsilon_min=0.01, epsilon_decay=0.995, epsilon_max=1.0):
         self.action_space = action_space
         self.observation_space = observation_space
+        self.state_space_size = state_space_size
+        self.action_space_size = action_space_size
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epsilon = epsilon
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
         self.epsilon_max = epsilon_max
-        self.q_table = defaultdict(lambda: np.zeros(action_space.n))
+        self.q_table = np.random.uniform(0, 1, size=(state_space_size, action_space_size))
         self.episode_duration = []
 
     def choose_action(self, state, trainmode:int=True):
@@ -82,7 +84,6 @@ def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool =
         while not terminated and not truncated:
             action = agent.choose_action(obs)
             next_obs, reward, terminated, truncated, info = env.step(action)
-            print(info)
             rw_list.append(reward)
             agent.update_q_table(obs, action, reward, next_obs)
             obs = next_obs
