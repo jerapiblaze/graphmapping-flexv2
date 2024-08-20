@@ -24,7 +24,7 @@ class ILPSolver(SliceMappingSolver):
         solution = {str(var): pulp.value(var) 
                     for var in self.ILP_PROBLEM.variables() 
                     if not pulp.value(var) == 0 and any(str(var).startswith(filter) for filter in VARIABLE_SURFIXES)}
-        obj_value = len([var for var in solution.keys() if str(var).startswith("xSFC") and solution[var] == 1])
+        obj_value = len([var for var in solution.keys() if str(var).startswith("pi") and solution[var] == 1])
         solver_runtime = self.ILP_PROBLEM.solutionTime
         solver_status = self.ILP_PROBLEM.status
         self.PROBLEM.solution = solution
