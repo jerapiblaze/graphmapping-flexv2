@@ -35,7 +35,7 @@ class QLearningSolver:
         solution = dict()
         obs = 0
         while obs <= self.env.observation_space_size:
-            print(obs)
+            # print(obs)
             action = self.agent.choose_action(obs, trainmode=False)
             action = action -1
             if action == -1:
