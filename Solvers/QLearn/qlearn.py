@@ -29,28 +29,30 @@ class QLearningSolver:
             obs = next_obs
 
         solution = self.env.render()
+        # print(solution)
+        # print(self.env.observation_space_size)
         return solution
     
-    def solve_clc(self, PHY, SLICES_SET):
-        solution = dict()
-        obs = 0
-        while obs <= self.env.observation_space_size:
-            # print(obs)
-            action = self.agent.choose_action(obs, trainmode=False)
-            action = action -1
-            if action == -1:
-                obs += 1
-            else:
-                config = SLICES_SET[obs][action]
-                _phy, nodeMap, linkMap, info = MapSlice(PHY, config)
-                if nodeMap == None or linkMap == None:
-                    return solution
-                obs += 1
-                solution.update({f"pi_{obs}":1})
-                solution.update({f"phi_{obs}_{action}":1})
-                solution.update({f"xNode_{obs}_{action}_{n[0]}_{n[1]}":1 for n in nodeMap})
-                solution.update({f"xEdge_{obs}_{action}_({l[0][0]},_{l[0][1]})_({l[1][0]},_{l[1][1]})":1 for l in linkMap})
-                PHY = _phy
-        return solution
+    # def solve_clc(self, PHY, SLICES_SET):
+    #     solution = dict()
+    #     obs = 0
+    #     while obs <= self.env.observation_space_size:
+    #         # print(obs)
+    #         action = self.agent.choose_action(obs, trainmode=False)
+    #         action = action -1
+    #         if action == -1:
+    #             obs += 1
+    #         else:
+    #             config = SLICES_SET[obs][action]
+    #             _phy, nodeMap, linkMap, info = MapSlice(PHY, config)
+    #             if nodeMap == None or linkMap == None:
+    #                 return solution
+    #             obs += 1
+    #             solution.update({f"pi_{obs}":1})
+    #             solution.update({f"phi_{obs}_{action}":1})
+    #             solution.update({f"xNode_{obs}_{action}_{n[0]}_{n[1]}":1 for n in nodeMap})
+    #             solution.update({f"xEdge_{obs}_{action}_({l[0][0]},_{l[0][1]})_({l[1][0]},_{l[1][1]})":1 for l in linkMap})
+    #             PHY = _phy
+    #     return solution
             
         
