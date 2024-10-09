@@ -2,7 +2,6 @@ import sys
 import os
 import time
 import pickle
-from Solvers.Greedy.greedy import MapSlice
 class QLearningSolver:
     def __init__(self, agent, env):
         self.agent = agent
