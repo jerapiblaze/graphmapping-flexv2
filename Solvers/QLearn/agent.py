@@ -39,9 +39,8 @@ class QLearningAgent:
 
     def update_q_table(self, state, action, reward, next_state):
         best_next_action = np.argmax(self.q_table[next_state])
-        td_target = reward + self.discount_factor * self.q_table[next_state][best_next_action]
-        td_error = td_target - self.q_table[state][action]
-        self.q_table[state][action] += self.learning_rate * td_error
+        new_q = (1-self.learning_rate) * self.q_table[state][action] + self.learning_rate * (reward + self.discount_factor * self.q_table[next_state][best_next_action])
+        self.q_table[state][action] = new_q
 
     def end_episode(self, reset=False):
         if reset:
