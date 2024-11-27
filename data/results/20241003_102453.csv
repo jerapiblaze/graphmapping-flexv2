@@ -1,0 +1,6 @@
+setname,solvername,problemname,status,solutionstatus,objvalue,runtime
+C13_ABI_10,QL_C13_ABI_10,graphmapping_4682be01,1,1,4,0.6636989730000096
+C13_POL_10,QL_C13_POL_10,graphmapping_eaa94ddd,1,1,4,0.508851722999907
+C13_ATL_10,QL_C13_ATL_10,graphmapping_444a53c9,1,1,6,0.9796185570000944
+C13_COS_20,QL_C13_COS_20,graphmapping_a552b1b0,1,1,13,7.149382212999853
+C13_PIO_20,QL_C13_PIO_20,graphmapping_bcc37619,1,1,13,10.906805340000119

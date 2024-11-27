@@ -39,8 +39,9 @@ class QLearningAgent:
 
     def update_q_table(self, state, action, reward, next_state):
         best_next_action = np.argmax(self.q_table[next_state])
-        new_q = (1-self.learning_rate) * self.q_table[state][action] + self.learning_rate * (reward + self.discount_factor * self.q_table[next_state][best_next_action])
-        self.q_table[state][action] = new_q
+        td_target = reward + self.discount_factor * self.q_table[next_state][best_next_action]
+        td_error = td_target - self.q_table[state][action]
+        self.q_table[state][action] += self.learning_rate * td_error
 
     def end_episode(self, reset=False):
         if reset:
@@ -49,7 +50,7 @@ class QLearningAgent:
             new_epsilon = self.epsilon * self.epsilon_decay
             self.epsilon = max(new_epsilon, self.epsilon_min)
 
-    def plot_duration(self, show_result=False):
+    def plot_duration(self, show_result=True, save_path='result_plot.png'):
         # plt.figure(1)
         duration_t = torch.tensor(self.episode_duration, dtype=torch.float)
         if show_result:
@@ -64,13 +65,16 @@ class QLearningAgent:
             means = duration_t.unfold(0, 100, 1).mean(1).view(-1)
             means = torch.cat((torch.zeros(99), means))
             plt.plot(means.numpy(), color='k')  # plot average reward
-        plt.pause(0.001)
+        plt.pause(0.000001)
         if IS_IPYTHON:
             if not show_result:
                 display.display(plt.gcf())
                 display.clear_output(wait=True)
             else:
                 display.display(plt.gcf())
+            # Lưu hình ảnh nếu save_path được chỉ định
+        if save_path is not None:
+            plt.savefig(save_path)
 
 def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool = False, liveview: bool = False) -> tuple[QLearningAgent, list[float]]:
     reward_list = []
@@ -81,8 +85,10 @@ def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool =
         truncated = False
         rw_list = []
         while not terminated and not truncated:
+            # print("obs: ",obs)
             action = agent.choose_action(obs)
             next_obs, reward, terminated, truncated, info = env.step(action)
+            # print(next_obs, reward, terminated, truncated, info)
             rw_list.append(reward)
             agent.update_q_table(obs, action, reward, next_obs)
             obs = next_obs
@@ -90,6 +96,7 @@ def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool =
             print(f"ep_{ep}: {info['message']} {obs} {info}")
         agent.end_episode()
         rw = sum(rw_list)  # cumulative reward
+        # print(rw)
         reward_list.append((ep, rw))
         if liveview:
             agent.episode_duration.append(rw)
