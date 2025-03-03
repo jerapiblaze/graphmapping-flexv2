@@ -19,13 +19,14 @@ def Main(config):
     alpha = config["ALPHA"]
     gamma = config["GAMMA"]
     epsilon_start, epsilon_end, epsilon_decay = config["EPSILON_START"], config["EPSILON_END"], config["EPSILON_DECAY"]
-    big_m, beta = config["BIG_M"], config["BETA"]
     problem_path_list = RecurseListDir(problem_dir, ["*.pkl.gz"])
     for problem_path in problem_path_list:
         problem = FlexSliceMappingProblem.LoadProblem(problem_path)
         env = QLearn.env.RLen3(problem.PHY, problem.SLICES_SET)
         # env = QLearn.env.StaticMapping2Env(problem.PHY, problem.SFC_SET, {"node_req": "req", "link_req": "req", "node_cap": "cap", "link_cap": "cap"}, big_m, beta)
-        agent = QLearn.agent.QLearningAgent(env.action_space, env.observation_space, env.observation_space_size, env.action_space_size)
+        agent = QLearn.agent.QLearningAgent(env.action_space, env.observation_space, env.observation_space_size, env.action_space_size,
+                                        learning_rate=alpha, discount_factor=gamma, epsilon_max=epsilon_start, 
+                                        epsilon_min=epsilon_end, epsilon_decay=epsilon_decay)
         trained_agent, rewards = QLearn.agent.TrainAgent(agent, env, n_episode, verbose, liveview)
         model_save_path = os.path.join("./data/__internals__/QL", f"{problem.name}.pkl.gz")
         QLearn.agent.SaveAgent(model_save_path, trained_agent)

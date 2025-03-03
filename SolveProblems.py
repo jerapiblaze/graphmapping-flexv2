@@ -36,6 +36,7 @@ def RLSolveMpWorker(queue: mp.Queue, Solver, checkpoint_path:str, solution_setpa
         problem_path = queue.get()
         model = Solver(problem=LoadProblem(problem_path), saved_agent_path=checkpoint_path, logpath=log_setpath, timelimit=timelimit)
         solved_problem = model.Solve()
+        print(solved_problem)
         validated_problem = ValidateSolution(solved_problem, debug=True, ndigits=ndigits)
         savepath = os.path.join(solution_setpath, f"{validated_problem.name}.pkl.gz")
         SaveProblem(savepath, validated_problem)

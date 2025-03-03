@@ -1,47 +1,69 @@
----
-PROBLEM_SETNAME: "C13_ABI_10"
-SOLVER: "GREEDY"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
----
-PROBLEM_SETNAME: "C13_ABI_10"
-SOLVER: "ILP@GUROBI"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
+# # QL-ILP
+# ---
+# PROBLEM_SETNAME: "C13_PIO_20"
+# SOLVER: "QL@./data/__internals__/QL/graphmapping_ad135cab.pkl.gz"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
 
----
-PROBLEM_SETNAME: "C13_POL_10"
-SOLVER: "GREEDY"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
----
-PROBLEM_SETNAME: "C13_POL_10"
-SOLVER: "ILP@GUROBI"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
 
----
-PROBLEM_SETNAME: "C13_ATL_10"
-SOLVER: "GREEDY"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
----
-PROBLEM_SETNAME: "C13_ATL_10"
-SOLVER: "ILP@GUROBI"
-TIMELIMIT: null
-LOGPATH: "./data/logs"
-NDIGITS: 5
-...
+
+
+
+
+
+
+
+
+
+
+
+
+# ---
+# PROBLEM_SETNAME: "C13_ABI_10"
+# SOLVER: "GREEDY"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+# ---
+# PROBLEM_SETNAME: "C13_ABI_10"
+# SOLVER: "ILP@GUROBI"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+
+# ---
+# PROBLEM_SETNAME: "C13_POL_10"
+# SOLVER: "GREEDY"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+# ---
+# PROBLEM_SETNAME: "C13_POL_10"
+# SOLVER: "ILP@GUROBI"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+
+# ---
+# PROBLEM_SETNAME: "C13_ATL_10"
+# SOLVER: "GREEDY"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
+# ---
+# PROBLEM_SETNAME: "C13_ATL_10"
+# SOLVER: "ILP@GUROBI"
+# TIMELIMIT: null
+# LOGPATH: "./data/logs"
+# NDIGITS: 5
+# ...
 
 # ---
 # PROBLEM_SETNAME: "C13_COS_30"
