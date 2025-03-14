@@ -1,0 +1,280 @@
+# # 10 slices - abilene
+# ---
+# PROBLEM_SETNAME: "C13_ABI_10"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/abilene.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 20.0000001
+# SFCSET:
+#   MODE: "flex@_1_3_@0.95@0.95"
+#   SFCCOUNT: 10
+#   KEEPSFC: 0
+# ...
+# # 10 slices - polsa
+# ---
+# PROBLEM_SETNAME: "C13_POL_10"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/polska.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 20.0000001
+# SFCSET:
+#   MODE: "flex@_1_3_@0.95@0.95"
+#   SFCCOUNT: 10
+#   KEEPSFC: 0
+# ...
+# # 10 slices - atlanta
+# ---
+# PROBLEM_SETNAME: "C13_ATL_10"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/atlanta.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 20.0000001
+# SFCSET:
+#   MODE: "flex@_1_3_@0.95@0.95"
+#   SFCCOUNT: 10
+#   KEEPSFC: 0
+# ...
+# # 30 slices - cost266
+# ---
+# PROBLEM_SETNAME: "C13_COS_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/cost266.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 20.0000001
+# SFCSET:
+#   MODE: "flex@_1_3_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+
+
+
+
+# ...
+# pioro40
+# ---
+# PROBLEM_SETNAME: "C123_PIO_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 15.0000001
+# SFCSET:
+#   MODE: "flex@_1_2_3_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+# ...
+
+# ---
+# PROBLEM_SETNAME: "C1_PIO_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 15.0000001
+# SFCSET:
+#   MODE: "flex@_1_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+# ...
+
+# ---
+# PROBLEM_SETNAME: "C2_PIO_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 15.0000001
+# SFCSET:
+#   MODE: "flex@_2_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+# ...
+
+# ---
+# PROBLEM_SETNAME: "C3_PIO_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FROMGML@./data/__internals__/SndLib/pioro40.gml"
+#   NODE:
+#     CPU: 20.0000001
+#     MEM: 0
+#     STO: 0
+#   LINK:
+#     BW: 15.0000001
+# SFCSET:
+#   MODE: "flex@_3_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+# ...
+
+---
+PROBLEM_SETNAME: "C13_2FAT_20"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FATTREE@2"
+  NODE:
+    CPU: 
+      host: 32
+      edge: 32
+      aggr: 64
+      core: 128
+    MEM:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+    STO:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+  LINK:
+    BW: 
+      hostedge: 10.001
+      edgeaggr: 15.001
+      aggrcore: 25.001
+SFCSET:
+  MODE: "flex@_1_3_@0.95@0.95"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...
+
+---
+PROBLEM_SETNAME: "C1_2FAT_20"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FATTREE@2"
+  NODE:
+    CPU: 
+      host: 32
+      edge: 32
+      aggr: 64
+      core: 128
+    MEM:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+    STO:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+  LINK:
+    BW: 
+      hostedge: 10.001
+      edgeaggr: 15.001
+      aggrcore: 25.001
+SFCSET:
+  MODE: "flex@_1_@0.95@0.95"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...
+
+# ---
+# PROBLEM_SETNAME: "C2_2FAT_20"
+# PROBLEM_COUNT: 1
+# KEEPPHY: 1
+# PHY:
+#   MODE: "FATTREE@2"
+#   NODE:
+#     CPU: 
+#       host: 32
+#       edge: 32
+#       aggr: 64
+#       core: 128
+#     MEM:
+#       host: 0
+#       edge: 0
+#       aggr: 0
+#       core: 0
+#     STO:
+#       host: 0
+#       edge: 0
+#       aggr: 0
+#       core: 0
+#   LINK:
+#     BW: 
+#       hostedge: 10.001
+#       edgeaggr: 15.001
+#       aggrcore: 25.001
+# SFCSET:
+#   MODE: "flex@_2_@0.95@0.95"
+#   SFCCOUNT: 20
+#   KEEPSFC: 0
+# ...
+
+---
+PROBLEM_SETNAME: "C3_2FAT_20"
+PROBLEM_COUNT: 1
+KEEPPHY: 1
+PHY:
+  MODE: "FATTREE@2"
+  NODE:
+    CPU: 
+      host: 32
+      edge: 32
+      aggr: 64
+      core: 128
+    MEM:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+    STO:
+      host: 0
+      edge: 0
+      aggr: 0
+      core: 0
+  LINK:
+    BW: 
+      hostedge: 10.001
+      edgeaggr: 15.001
+      aggrcore: 25.001
+SFCSET:
+  MODE: "flex@_3_@0.95@0.95"
+  SFCCOUNT: 20
+  KEEPSFC: 0
+...

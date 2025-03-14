@@ -8,5 +8,11 @@ class Solver(ILPSolver):
             msg=verbose,
             timeLimit=timelimit,
             logPath=logfile,
-            options=[("Heuristics", "0.25"), ("NodeLimit", "100000"), ("ConcurrentMIP", "4"), ("MIPGap", "2.5e-2")]
+            # options=[("Heuristics", "0.25"), ("NodeLimit", "100000"), ("ConcurrentMIP", "4"), ("MIPGap", "2.5e-2")]
+            options=[
+                # ("Heuristics", "0.25"), 
+                ("NodeLimit", "500000"), 
+                # ("ConcurrentMIP", "4"), 
+                ("MIPGap", "0.5e-2")
+            ]
         )

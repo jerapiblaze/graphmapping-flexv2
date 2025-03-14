@@ -89,25 +89,25 @@ def GenerateConfig_2(prefix:str) -> nx.DiGraph:
         (
             0, {
                 "label":"IN",
-                "req": NodeResource(10, 10, 10)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
             1, {
                 "label":"MID1",
-                "req": NodeResource(20, 20, 20)
+                "req": NodeResource(25, 0, 0)
             }
         ),
         (
             2, {
                 "label":"MID2",
-                "req": NodeResource(5, 5, 5)
+                "req": NodeResource(5, 0, 0)
             }
         ),
         (
             3, {
                 "label":"OUT",
-                "req": NodeResource(10, 10, 10)
+                "req": NodeResource(10, 0, 0)
             }
         )
     ]
@@ -121,13 +121,13 @@ def GenerateConfig_2(prefix:str) -> nx.DiGraph:
         (
             1, 2, 
             {
-                "req": LinkResource(1)
+                "req": LinkResource(15)
             }
         ),
         (
-            2, 3, 
+            1, 3, 
             {
-                "req": LinkResource(1)
+                "req": LinkResource(5)
             }
         )
     ]
@@ -149,14 +149,14 @@ def GenerateConfig_3(prefix:str) -> nx.DiGraph:
             1, {
                 "label":"MN",
                 "name":"Monitoring",
-                "req": NodeResource(5, 0, 0)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
             2, {
                 "label":"FW",
                 "name":"Firewall",
-                "req": NodeResource(5, 0, 0)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
@@ -170,22 +170,22 @@ def GenerateConfig_3(prefix:str) -> nx.DiGraph:
     LINKS = [
         (
             0, 1, {
-                "req": LinkResource(10)
+                "req": LinkResource(5)
             }
         ),
         (
             0, 2 , {
-                "req": LinkResource(10)
+                "req": LinkResource(5)
             }
         ),
         (
             1, 3 , {
-                "req": LinkResource(15)
+                "req": LinkResource(10)
             }
         ),
         (
             2, 3 , {
-                "req": LinkResource(15)
+                "req": LinkResource(10)
             }
         )
     ]
@@ -199,31 +199,31 @@ def GenerateConfig_4(prefix:str) -> nx.DiGraph:
         (
             0, {
                 "label":"IN",
-                "req": NodeResource(10, 10, 10)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
             1, {
                 "label":"MID0",
-                "req": NodeResource(10, 10, 10)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
             2, {
                 "label":"MID1",
-                "req": NodeResource(5, 5, 5)
+                "req": NodeResource(5, 0, 0)
             }
         ),
         (
             3, {
                 "label":"MID2",
-                "req": NodeResource(5, 5, 5)
+                "req": NodeResource(5, 0, 0)
             }
         ),
         (
             4, {
                 "label":"OUT",
-                "req": NodeResource(5, 5, 5)
+                "req": NodeResource(5, 0, 0)
             }
         )
     ]

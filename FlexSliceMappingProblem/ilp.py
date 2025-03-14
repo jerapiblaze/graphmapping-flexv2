@@ -6,7 +6,7 @@ from .resources import NodeResource, LinkResource, ZERO_LINK_RESOURCE, ZERO_NODE
 
 VARIABLE_SURFIXES = ["xNode","xEdge","pi","phi"]
 M = 100
-GAMMA = 0.9999
+GAMMA = 0.9
 
 def ConvertToIlp(prob:SliceMappingProblem) -> pulp.LpProblem:
     PHY = prob.PHY
@@ -116,14 +116,14 @@ def ConvertToIlp(prob:SliceMappingProblem) -> pulp.LpProblem:
     problem += (
         - GAMMA*pulp.lpSum(
             pi[s] for s in range(len(SLICES_SET))
-        ) 
+        )/len(SLICES_SET) * 100
         + (1-GAMMA)*pulp.lpSum(
             xEdge[s][k][(v,w)][(i,j)] 
             for s in range(len(SLICES_SET)) 
             for k in range(len(SLICES_SET[s]))
             for (i,j) in PHY.edges
             for (v,w) in SLICES_SET[s][k].edges
-        )
+        )/len(list(PHY.edges))/len(SLICES_SET) * 100
     )
     return problem
 
