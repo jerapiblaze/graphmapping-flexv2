@@ -1,0 +1,10 @@
+setname,solvername,problemname,config,configcount,objvalue
+C3_2FAT_20,ILP_GUROBI,graphmapping_69ad2708,type3,12,0
+C2_2FAT_20,ILP_GUROBI,graphmapping_49a9bf7e,type2,12,0
+C1_2FAT_20,ILP_GUROBI,graphmapping_4ab15a79,type1,14,0
+C123_PIO_20,ILP_GUROBI,graphmapping_4a472ea9,type2,15,0
+C123_PIO_20,ILP_GUROBI,graphmapping_4a472ea9,type1,1,0
+C13_2FAT_20,ILP_GUROBI,graphmapping_d36c7c70,type1,14,0
+C13_2FAT_20,ILP_GUROBI,graphmapping_d36c7c70,type3,1,0
+C2_PIO_20,ILP_GUROBI,graphmapping_b8b86531,type2,16,0
+C1_PIO_20,ILP_GUROBI,graphmapping_d698a951,type1,16,0

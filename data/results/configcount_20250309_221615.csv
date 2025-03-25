@@ -1,0 +1,3 @@
+setname,solvername,problemname,config,configcount,objvalue
+C123_PIO_20,ILP_GUROBI,graphmapping_a712a504,type2,14,0
+C123_PIO_20,ILP_GUROBI,graphmapping_a712a504,type1,2,0

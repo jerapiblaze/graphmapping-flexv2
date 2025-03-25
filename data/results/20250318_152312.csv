@@ -1,0 +1,4 @@
+setname,solvername,problemname,status,solutionstatus,objvalue,runtime
+C3_2FAT_20,ILP_GUROBI,graphmapping_69ad2708,1,1,12,5580.122869491577
+C2_2FAT_20,ILP_GUROBI,graphmapping_49a9bf7e,1,1,12,108.46263265609741
+C13_2FAT_20,QL_graphmapping_d36c7c70,graphmapping_d36c7c70,1,1,9,1.5883595859631896

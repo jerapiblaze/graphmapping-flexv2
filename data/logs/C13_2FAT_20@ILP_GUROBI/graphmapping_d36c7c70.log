@@ -1,0 +1,73 @@
+
+Gurobi 11.0.3 (linux64, gurobi_cl) logging started Tue Mar 18 15:12:53 2025
+
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2630295
+Set parameter NodeLimit to value 500000
+Set parameter MIPGap to value 0.005
+Set parameter LogFile to value "./data/logs/C13_2FAT_20@ILP_GUROBI/graphmapping_d36c7c70.log"
+Using license file /home/stu1/gurobi.lic
+Academic license 2630295 - for non-commercial use only - registered to mi___@sis.hust.edu.vn
+
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 24.04.1 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /tmp/bc6b637bd30e4fba9ff9a220099b2ec4-pulp.lp
+Reading time = 0.02 seconds
+OBJ: 6154 rows, 8581 columns, 53016 nonzeros
+
+CPU model: 12th Gen Intel(R) Core(TM) i5-12500T, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Academic license 2630295 - for non-commercial use only - registered to mi___@sis.hust.edu.vn
+Optimize a model with 6154 rows, 8581 columns and 53016 nonzeros
+Model fingerprint: 0x1f07b7d7
+Variable types: 1 continuous, 8580 integer (8580 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+02]
+  Objective range  [1e-02, 4e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+02]
+Found heuristic solution: objective 0.0000000
+Presolve removed 156 rows and 221 columns
+Presolve time: 0.11s
+Presolved: 5998 rows, 8360 columns, 51560 nonzeros
+Variable types: 0 continuous, 8360 integer (8360 binary)
+
+Root relaxation: objective -7.560000e+01, 2274 iterations, 0.13 seconds (0.20 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -75.60000    0  226    0.00000  -75.60000      -     -    0s
+H    0     0                     -17.7125000  -75.60000   327%     -    0s
+H    0     0                     -17.7375000  -75.60000   326%     -    0s
+     0     0  -75.60000    0  345  -17.73750  -75.60000   326%     -    0s
+H    0     0                     -22.1875000  -75.60000   241%     -    0s
+H    0     0                     -22.2125000  -75.60000   240%     -    0s
+     0     0  -75.60000    0  230  -22.21250  -75.60000   240%     -    1s
+     0     0  -75.60000    0  281  -22.21250  -75.60000   240%     -    1s
+     0     0  -75.60000    0  207  -22.21250  -75.60000   240%     -    1s
+     0     0  -75.60000    0  207  -22.21250  -75.60000   240%     -    1s
+     0     2  -75.60000    0  207  -22.21250  -75.60000   240%     -    2s
+
+Cutting planes:
+  Gomory: 182
+  Cover: 880
+  Clique: 567
+  MIR: 86
+  GUB cover: 114
+  Zero half: 156
+  RLT: 270
+
+Explored 30 nodes (72438 simplex iterations) in 4.87 seconds (7.71 work units)
+Thread count was 12 (of 12 available processors)
+
+Solution count 5: -22.2125 -22.1875 -17.7375 ... 0
+
+Solve interrupted
+Best objective -2.221250000000e+01, best bound -7.548750000000e+01, gap 239.8424%
+
+Wrote result file '/tmp/bc6b637bd30e4fba9ff9a220099b2ec4-pulp.sol'
+
