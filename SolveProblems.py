@@ -118,7 +118,7 @@ def MpWorker(queue: mp.Queue):
 if __name__ == "__main__":
     mp.set_start_method("spawn")
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("-c", "--config", default="./configs/SolveSettings/dummy_3k.yaml")
+    argparser.add_argument("-c", "--config", default="./configs/SolveSettings/dummy.yaml")
     args = argparser.parse_args()
     config_list = ConfigParser(args.config)
     q = IterToQueue(config_list)

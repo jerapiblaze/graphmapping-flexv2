@@ -31,6 +31,7 @@ def ValidateSolution(prob: SliceMappingProblem, debug:bool=False, ndigits:int=5)
     SLICES_SET = prob.SLICES_SET
     solution = prob.solution
     result = validatesolution(PHY, SLICES_SET, solution, ndigits)
+    print("result: ",result)
     prob.solution_status = result
     return prob
 
@@ -63,6 +64,10 @@ def validatesolution(PHY:nx.DiGraph, SLICES_SET:list[list[nx.DiGraph]], solution
                     for (v,w) in SLICES_SET[s][k].edges
                 ) <= PHY.edges[(i,j)]["cap"][attr_i]
             ):
+                print(xEdge[s][k][(v,w)][(i,j)]
+                    for s in range(len(SLICES_SET))
+                    for k in range(len(SLICES_SET[s]))
+                    for (v,w) in SLICES_SET[s][k].edges)
                 return f"C2_{(i,j)}_@{attr_i}"
     # C3: Map One
     for s in range(len(SLICES_SET)):

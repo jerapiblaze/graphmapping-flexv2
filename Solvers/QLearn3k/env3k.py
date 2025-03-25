@@ -26,9 +26,9 @@ class RLen3(gym.Env):
         self.mapped_configs = set()
         self.sol = dict()
         self.observation_space = gym.spaces.Discrete(n=self.num_sfcs + 1)
-        self.action_space = gym.spaces.Discrete(3)
+        self.action_space = gym.spaces.Discrete(4)
         self.observation_space_size = self.num_sfcs
-        self.action_space_size = 3
+        self.action_space_size = 4
         self.__is_truncated = False
     
     def reset(self):
@@ -66,9 +66,7 @@ class RLen3(gym.Env):
     def update_physical_network(self, mapping_result, K):
         node_mapping = mapping_result.get('node_mapping', {})
         link_mapping = mapping_result.get('link_mapping', {})
-        # print(f"Node mapping: {list(node_mapping.items())[0]}")
         for sfc_id, vnf in node_mapping.items():
-            # print(sfc_id, vnf_id)
             for vnf_id, phy_node in vnf.items():
                 vnode_req = self.__get_vnode_req(K[sfc_id[0]][sfc_id[1]], vnf_id)
                 node_cap = self.__get_node_cap(phy_node)
@@ -85,7 +83,7 @@ class RLen3(gym.Env):
                         nx.set_edge_attributes(self.physical_graph_current, {sub_link: updated_cap}, "cap")
                     
     def _get_action_detail(self, action):
-        if action not in [0, 1]:
+        if action not in [0, 2]:
             return None  
         for s_index in range(self.sfc_order_current, len(self.sfcs_list)):
             s = self.sfcs_list[s_index]
@@ -93,7 +91,7 @@ class RLen3(gym.Env):
                 return (s_index, action, s[action])
     
     def _get_action_detail2(self, action):
-        if action not in [0, 1]:
+        if action not in [0, 2]:
             return None
         if action == 1:
             action -= 1
@@ -230,12 +228,12 @@ class RLen3(gym.Env):
         solver = GUROBI_CMD(msg=0)  
         problem.solve(solver)   
         for v in problem.variables(): 
-            # if v.varValue == 1:          
+            if v.varValue == 1:          
                 new_solution[v.name] = v.varValue   
         temporary_solution = {}
         # Sử dụng một từ điển tạm thời để lưu trữ các cặp khóa-giá trị mới
         for key, value in new_solution.items():
-            # if value == 1:
+            if value == 1:
                 new_key = self.__update_key(key, sfc_index, config_index)
                 temporary_solution[new_key] = value 
         
