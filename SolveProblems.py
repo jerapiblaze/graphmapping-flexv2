@@ -83,6 +83,20 @@ def Main(config: dict):
             LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
+        case "GREEDY_RR":
+            target=HeuristicsSolveMpWorker
+            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            CleanDir(SOLUTION_SETPATH)
+            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            CleanDir(LOG_SETPATH)
+            args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
+        case "GREEDY_RS":
+            target=HeuristicsSolveMpWorker
+            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            CleanDir(SOLUTION_SETPATH)
+            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            CleanDir(LOG_SETPATH)
+            args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "QL":
             target=RLSolveMpWorker
             from Solvers.QLearn import Solver

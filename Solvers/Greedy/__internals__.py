@@ -10,6 +10,8 @@ from FlexSliceMappingProblem.resources import *
 from utilities.profiler import StopWatch
 from utilities.exceptions import get_exception_traceback_str
 from Solvers.Greedy.greedy import Greedy
+from Solvers.Greedy.greedy_rr import GreedyRR
+from Solvers.Greedy.greedy_rs import GreedyRS
 
 class Solver(SliceMappingSolver):
     def __init__(self, problem: SliceMappingProblem, logpath: str = None, timelimit: int = None, verbose: bool = False):
@@ -18,6 +20,7 @@ class Solver(SliceMappingSolver):
         self.timelimit = timelimit
         self.verbose = verbose
         self.__profiler__ = StopWatch(f"[se_eigenstar] {self.problem.name}", verbose)
+        self.Greedy = Greedy
 
     def Solve(self,) -> SliceMappingProblem:
         self.__profiler__.start()
@@ -26,7 +29,7 @@ class Solver(SliceMappingSolver):
         obj = 0
         tim = 0
         try:
-            sol = Greedy(PHY=self.problem.PHY, SLICE_SET=self.problem.SLICES_SET, profiler=self.__profiler__, timelimit=self.timelimit)
+            sol = self.Greedy(PHY=self.problem.PHY, SLICE_SET=self.problem.SLICES_SET, profiler=self.__profiler__, timelimit=self.timelimit)
             obj = len([var for var in sol.keys() if str(var).startswith("pi") and sol[var] == 1])
             if obj == 0:
                 sta = 0
@@ -50,3 +53,13 @@ class Solver(SliceMappingSolver):
         self.problem.solution_time = tim
         self.problem.obj_value = obj
         return self.problem
+    
+class SolverRR(Solver):
+    def __init__(self, problem: SliceMappingProblem, logpath: str = None, timelimit: int = None, verbose: bool = False):
+        super().__init__(problem, logpath, timelimit, verbose)
+        self.Greedy = GreedyRR
+        
+class SolverRS(Solver):
+    def __init__(self, problem: SliceMappingProblem, logpath: str = None, timelimit: int = None, verbose: bool = False):
+        super().__init__(problem, logpath, timelimit, verbose)
+        self.Greedy = GreedyRS
