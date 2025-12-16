@@ -22,10 +22,16 @@ def Main(config:dict):
     
     PHY_NODECAP = (config["PHY"]["NODE"]["CPU"],config["PHY"]["NODE"]["MEM"],config["PHY"]["NODE"]["STO"])
     PHY_LINKCAP = (config["PHY"]["LINK"]["BW"],)
+    PHY_NODECAP_MIN = (config["PHY"]["NODE"].get("CPU_MIN",0),config["PHY"]["NODE"].get("MEM_MIN",0),config["PHY"]["NODE"].get("STO_MIN",0))
+    PHY_LINKCAP_MIN = (config["PHY"]["LINK"].get("BW_MIN",0),)
+    if PHY_NODECAP_MIN == (0,0,0):
+        PHY_NODECAP_MIN = None
+    if PHY_LINKCAP_MIN == (0,):
+        PHY_LINKCAP_MIN = None
     match PHY_MODE[0]:
         case "FROMGML":
             from FlexSliceMappingProblem.phy.fromgml import FromGmlGraphGenerator as PhyGraphGenerator
-            phygraphGenerator = PhyGraphGenerator(gml_path=PHY_MODE[1], nodecap=PHY_NODECAP, linkcap=PHY_LINKCAP)
+            phygraphGenerator = PhyGraphGenerator(gml_path=PHY_MODE[1], nodecap=PHY_NODECAP, linkcap=PHY_LINKCAP, nodecap_min=PHY_NODECAP_MIN, linkcap_min=PHY_LINKCAP_MIN)
         case "FATTREE":
             from FlexSliceMappingProblem.phy.kfat import FatTreeGraphGenerator as PhyGraphGenerator
             phygraphGenerator = PhyGraphGenerator(

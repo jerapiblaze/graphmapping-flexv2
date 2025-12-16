@@ -85,6 +85,7 @@ def Main(config: dict):
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "GREEDY_RR":
             target=HeuristicsSolveMpWorker
+            from Solvers.Greedy_RR import Solver
             SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
             LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
@@ -92,6 +93,7 @@ def Main(config: dict):
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "GREEDY_RS":
             target=HeuristicsSolveMpWorker
+            from Solvers.Greedy_RS import Solver
             SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
             LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
