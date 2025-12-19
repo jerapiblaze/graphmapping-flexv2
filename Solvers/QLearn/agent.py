@@ -49,7 +49,7 @@ class QLearningAgent:
             new_epsilon = self.epsilon * self.epsilon_decay
             self.epsilon = max(new_epsilon, self.epsilon_min)
 
-    def plot_duration(self, show_result=False):
+    def plot_duration(self, show_result=False, save_path=None):
         # plt.figure(1)
         duration_t = torch.tensor(self.episode_duration, dtype=torch.float)
         if show_result:
@@ -60,10 +60,17 @@ class QLearningAgent:
         plt.xlabel("Episode")
         plt.ylabel("Cumulative reward")
         plt.plot(duration_t.numpy(), color='silver')  # plot cumulative reward
-        if len(duration_t) >= 100:
-            means = duration_t.unfold(0, 100, 1).mean(1).view(-1)
-            means = torch.cat((torch.zeros(99), means))
+        if len(duration_t) >= 2:
+            means = duration_t.unfold(0, 2, 1).mean(1).view(-1)
+            means = torch.cat((torch.zeros(2), means))
             plt.plot(means.numpy(), color='k')  # plot average reward
+        # plt.legend()
+
+        # if show_result and save_path is not None:
+        #     plt.tight_layout()
+        #     plt.savefig(save_path)
+        #     plt.close()
+        #     return
         plt.pause(0.001)
         if IS_IPYTHON:
             if not show_result:
@@ -71,6 +78,28 @@ class QLearningAgent:
                 display.clear_output(wait=True)
             else:
                 display.display(plt.gcf())
+    def save_live_plot(self, filename="live_reward.png"):
+        duration_t = torch.tensor(self.episode_duration, dtype=torch.float)
+
+        plt.figure(figsize=(8,4))
+        plt.clf()
+        plt.title("QL Training (Live View)")
+        plt.xlabel("Episode")
+        plt.ylabel("Cumulative Reward")
+
+        # draw reward curve
+        plt.plot(duration_t.numpy(), color="steelblue")
+
+        # moving average 10 windows
+        if len(duration_t) >= 40:
+            means = duration_t.unfold(0, 40, 1).mean(1).view(-1)
+            means = torch.cat((torch.zeros(39), means))
+            plt.plot(means.numpy(), color="k")
+
+        # plt.legend()
+        plt.tight_layout()
+        plt.savefig(filename)      # overwrite file
+        plt.close()                # close fig to avoid memory leak
 
 def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool = False, liveview: bool = False) -> tuple[QLearningAgent, list[float]]:
     reward_list = []
@@ -83,6 +112,8 @@ def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool =
         while not terminated and not truncated:
             action = agent.choose_action(obs)
             next_obs, reward, terminated, truncated, info = env.step(action)
+            if reward == 0:
+                action = 0 
             rw_list.append(reward)
             agent.update_q_table(obs, action, reward, next_obs)
             obs = next_obs
@@ -93,7 +124,16 @@ def TrainAgent(agent: QLearningAgent, env: RLen3, nepisode: int, verbose: bool =
         reward_list.append((ep, rw))
         if liveview:
             agent.episode_duration.append(rw)
-            agent.plot_duration()
+            # agent.plot_duration(show_result=False, save_path="final_reward.png")
+        # if liveview and (ep % 5 == 0):
+        #     agent.save_live_plot("live_reward.png")
+
+        if verbose:
+            print(f"ep {ep}: reward={rw}")
+
+    # save final
+    if liveview:
+        agent.save_live_plot("live_reward_final.png")
     return agent, reward_list
 
 def SaveAgent(path:str, agent:QLearningAgent):

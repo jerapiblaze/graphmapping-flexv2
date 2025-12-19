@@ -26,9 +26,9 @@ class RLen3(gym.Env):
         self.mapped_configs = set()
         self.sol = dict()
         self.observation_space = gym.spaces.Discrete(n=self.num_sfcs + 1)
-        self.action_space = gym.spaces.Discrete(3)
+        self.action_space = gym.spaces.Discrete(4)
         self.observation_space_size = self.num_sfcs
-        self.action_space_size = 3
+        self.action_space_size = 4
         self.__is_truncated = False
     
     def reset(self):
@@ -83,30 +83,12 @@ class RLen3(gym.Env):
                         nx.set_edge_attributes(self.physical_graph_current, {sub_link: updated_cap}, "cap")
                     
     def _get_action_detail(self, action):
-        if action not in [0, 1]:
+        if action not in [0, 1, 2]:
             return None  
         for s_index in range(self.sfc_order_current, len(self.sfcs_list)):
             s = self.sfcs_list[s_index]
             if action < len(s):
                 return (s_index, action, s[action])
-    
-    def _get_action_detail2(self, action):
-        if action not in [0, 1]:
-            return None
-        if action == 1:
-            action -= 1
-        elif action == 0:
-            action += 1
-        for s_index in range(self.sfc_order_current, len(self.sfcs_list)):
-            s = self.sfcs_list[s_index]
-            if action < len(s):
-                return (s_index, action, s[action])
-            
-    def _get_action_detail3(self, action):
-        if action == -1:
-            for s_index in range(self.sfc_order_current, len(self.sfcs_list)):
-                s = self.sfcs_list[s_index]
-                return (s_index, action, s[0], s[1])
                
         
         return None
@@ -186,7 +168,7 @@ class RLen3(gym.Env):
             return (self.sfc_order_current, reward, self.__is_reached_termination(), self.__is_truncated, info)
 
         if (action == -1):
-            reward = 0
+            reward = -0.3
             if is_last:
                 info = {
                     "message": f"skip last config - ALL DONE"
@@ -244,6 +226,7 @@ class RLen3(gym.Env):
         # print(mapping_result) 
         reward = -reward
         if reward == -0:
+            reward = -1
             if self.__is_last_of_sfc():
                 info = {
                     "message": f"skip the last config - ALL DONE"

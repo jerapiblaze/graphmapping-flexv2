@@ -44,7 +44,7 @@ def extract_mapping_result(lp_problem, K, PHY, xEdge):
 
 VARIABLE_SURFIXES = ["xNode","xEdge","pi","phi"]
 M = 100
-GAMMA = 0.9999
+GAMMA = 1
 
 def ConvertToILP(PHY, K) -> pulp.LpProblem:
     PHY = PHY
@@ -155,13 +155,13 @@ def ConvertToILP(PHY, K) -> pulp.LpProblem:
         - GAMMA*pulp.lpSum(
             pi[s] for s in range(len(SLICES_SET))
         ) 
-        + (1-GAMMA)*pulp.lpSum(
-            xEdge[s][k][(v,w)][(i,j)] 
-            for s in range(len(SLICES_SET)) 
-            for k in range(len(SLICES_SET[s]))
-            for (i,j) in PHY.edges
-            for (v,w) in SLICES_SET[s][k].edges
-        )
+        # + (1-GAMMA)*pulp.lpSum(
+        #     xEdge[s][k][(v,w)][(i,j)] 
+        #     for s in range(len(SLICES_SET)) 
+        #     for k in range(len(SLICES_SET[s]))
+        #     for (i,j) in PHY.edges
+        #     for (v,w) in SLICES_SET[s][k].edges
+        # )
     )
     return problem, xNode, xEdge, phi, pi, z
 

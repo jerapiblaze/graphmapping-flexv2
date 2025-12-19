@@ -1,5 +1,5 @@
 import FlexSliceMappingProblem
-import Solvers.QLearn as QLearn
+import Solvers.QLearn_CLC as QLearn
 import gymnasium as gym
 from utilities.config import ConfigParser
 from utilities.dir import RecurseListDir, CleanDir
@@ -11,11 +11,11 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 def Main(config):
     print(config)
     if config["DELETE_OLD_DATA"]:
-        CleanDir("./data/__internals__/QL")
+        CleanDir("./data/__internals__/QL_CLC")
     problemset_name = config["PROBLEM_SETNAME"]
     save_reward = config["SAVE_REWARDS"]
     liveview, verbose = config["LIVEVIEW"], config["VERBOSE"]
-    problem_dir = os.path.join(f"./data/multi_1/problems/{problemset_name}")
+    problem_dir = os.path.join(f"./data/problems/{problemset_name}")
     n_episode = config["N_EPISODES"]
     alpha = config["ALPHA"]
     gamma = config["GAMMA"]
@@ -34,14 +34,13 @@ def Main(config):
         trained_agent, rewards = QLearn.agent.TrainAgent(agent, env, n_episode, verbose, liveview)
         train_time = time() - start_time
         print(f"Training time for {problem.name}: {train_time:.2f} seconds")
-        basename = os.path.basename(problem_path).replace(".pkl.gz", "")
-        safe_name = f"{basename}_a{alpha}_g{gamma}_n{n_episode}"
-        model_save_path = os.path.join("./data/__internals__/QL_multi",  f"{safe_name}.pkl.gz")
+        safe_name = f"{problem.name}_n{problemset_name}_a{alpha}_g{gamma}_n{n_episode}envNew"
+        model_save_path = os.path.join("./data/__internals__/QL_CLC",  f"{safe_name}.pkl.gz")
         QLearn.agent.SaveAgent(model_save_path, trained_agent)
         if not save_reward:
             continue
-        rewards_save_path = os.path.join("./data/__internals__/QL_multi", f"{safe_name}_rewards.csv")
-        #rewards_save_path = os.path.join("./data/__internals__/QL_multi", f"{problem.name}_a{alpha}_g{gamma}"_rewards.csv")
+        rewards_save_path = os.path.join("./data/__internals__/QL_CLC", f"{safe_name}_rewards.csv")
+        #rewards_save_path = os.path.join("./data/__internals__/QL", f"{problem.name}_a{alpha}_g{gamma}"_rewards.csv")
         print("done")
         with open(rewards_save_path, "wt") as f:
             f.write("ep, reward\n")

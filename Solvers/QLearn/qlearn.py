@@ -22,7 +22,7 @@ class QLearningSolver:
         while not terminated and not truncated:
             action = self.agent.choose_action(obs, trainmode=False)
             next_obs, reward, terminated, truncated, info = self.env.step(action)
-            print(next_obs, reward, terminated, truncated, info )
+            # print(next_obs, reward, terminated, truncated, info )
             if reward > 0:
                 mapped_slices += 1
             obs = next_obs

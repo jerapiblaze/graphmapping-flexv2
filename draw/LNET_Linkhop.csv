@@ -1,0 +1,5 @@
+setname,solvername,problemname,objvalue,totalvirtuallinks,totalphysicallinks,nhops
+C5_ABI_10,ILP_GUROBI,graphmapping_1822f88e,4,12,41,3.41667
+C3_ABI_10,ILP_GUROBI,graphmapping_e685dad0,4,16,23,1.4375
+C135_ABI_10,ILP_GUROBI,graphmapping_8cc97f88,5,17,35,2.05882
+C1_ABI_10,ILP_GUROBI,graphmapping_77934066,4,12,38,3.16667
