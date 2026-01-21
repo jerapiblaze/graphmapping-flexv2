@@ -1,4 +1,4 @@
-# Flexible Graph Mapping Problem
+# Flexible Graph Mapping Problem (flex-v2-rl)
 
 ## Environemt setup
 
