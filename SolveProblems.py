@@ -45,7 +45,7 @@ def RLSolveMpWorker(queue: mp.Queue, Solver, checkpoint_path:str, solution_setpa
 def Main(config: dict):
     print(config)
     PROBLEM_SETNAME = config["PROBLEM_SETNAME"]
-    PROBLEM_SETPATH = os.path.join("./data/problems", PROBLEM_SETNAME)
+    PROBLEM_SETPATH = os.path.join("./data/multi_1/problems", PROBLEM_SETNAME)
     problem_set = RecurseListDir(PROBLEM_SETPATH, ["*.pkl.gz"])
 
     SOLVER = str(config["SOLVER"]).split("@")
@@ -70,51 +70,51 @@ def Main(config: dict):
                     from Solvers.ILP.gurobi import Solver
                 case _:
                     raise Exception(f"[Invalid config] SOLVER=ILP_{SOLVER[1]}")
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "GREEDY":
             target=HeuristicsSolveMpWorker
             from Solvers.Greedy import Solver
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "GREEDY_RR":
             target=HeuristicsSolveMpWorker
             from Solvers.Greedy_RR import Solver
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "GREEDY_RS":
             target=HeuristicsSolveMpWorker
             from Solvers.Greedy_RS import Solver
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@{'_'.join(SOLVER)}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "QL":
             target=RLSolveMpWorker
             from Solvers.QLearn import Solver
             agentname = str(os.path.basename(SOLVER[1])).split(".")[0]
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@QL_{agentname}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@QL_{agentname}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@QL_{agentname}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@QL_{agentname}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLVER[1], SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case "QL_CLC":
             target=RLSolveMpWorker
             from Solvers.QLearn_CLC import Solver
             agentname = str(os.path.basename(SOLVER[1])).split(".")[0]
-            SOLUTION_SETPATH = os.path.join("./data/solutions", f"{PROBLEM_SETNAME}@QL_CLC_{agentname}")
+            SOLUTION_SETPATH = os.path.join("./data/multi_1/solutions", f"{PROBLEM_SETNAME}@QL_CLC_{agentname}")
             CleanDir(SOLUTION_SETPATH)
-            LOG_SETPATH = os.path.join("./data/logs", f"{PROBLEM_SETNAME}@QL_CLC_{agentname}")
+            LOG_SETPATH = os.path.join("./data/multi_1/logs", f"{PROBLEM_SETNAME}@QL_CLC_{agentname}")
             CleanDir(LOG_SETPATH)
             args = (q, Solver, SOLVER[1], SOLUTION_SETPATH, LOG_SETPATH, timelimit, ndigits)
         case _:
@@ -133,7 +133,7 @@ def MpWorker(queue: mp.Queue):
 if __name__ == "__main__":
     mp.set_start_method("spawn")
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("-c", "--config", default="./configs/SolveSettings/dummy.yaml")
+    argparser.add_argument("-c", "--config", default="./configs/SolveSettings/dummy_multi.yaml")
     args = argparser.parse_args()
     config_list = ConfigParser(args.config)
     q = IterToQueue(config_list)

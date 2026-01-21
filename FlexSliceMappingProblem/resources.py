@@ -183,6 +183,13 @@ class NodeResource:
                 case _:
                     raise Exception("Not implemented.")
         return self.resources[index]
+    
+    @classmethod
+    def random_uniform(self, cpu_range:tuple[float,float], memory_range:tuple[float,float], storage_range:tuple[float,float]):
+        cpu = np.random.uniform(cpu_range[0], cpu_range[1])
+        memory = np.random.uniform(memory_range[0], memory_range[1])
+        storage = np.random.uniform(storage_range[0], storage_range[1])
+        return NodeResource(cpu, memory, storage)
             
 ZERO_NODE_RESOURCE = NodeResource()
 
@@ -320,5 +327,10 @@ class LinkResource:
                 case _:
                     raise Exception("Not implemented.")
         return self.resources[index]
+    
+    @classmethod
+    def random_uniform(self, bandwidth_range:tuple[float,float]):
+        bandwidth = np.random.uniform(bandwidth_range[0], bandwidth_range[1])
+        return LinkResource(bandwidth)
             
 ZERO_LINK_RESOURCE = LinkResource()

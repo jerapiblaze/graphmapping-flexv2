@@ -279,7 +279,7 @@ def GenerateConfig_5(prefix:str) -> nx.DiGraph:
             1, {
                 "label":"MN",
                 "name":"Monitoring",
-                "req": NodeResource(5, 0, 0)
+                "req": NodeResource(10, 0, 0)
             }
         ),
         (
@@ -293,7 +293,7 @@ def GenerateConfig_5(prefix:str) -> nx.DiGraph:
             3, {
                 "label":"LB",
                 "name":"LoadBalancer",
-                "req": NodeResource(20, 0, 0)
+                "req": NodeResource(15, 0, 0)
             }
         )
     ]

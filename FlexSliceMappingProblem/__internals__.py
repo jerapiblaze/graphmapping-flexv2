@@ -5,8 +5,8 @@ import networkx as nx
 import gzip
 
 class SliceMappingProblem:
-    def __init__(self, phy:nx.DiGraph, slices_set:list[list[nx.DiGraph]]) -> None:
-        self.name = f"graphmapping_{uuid.uuid4().hex[:8]}"
+    def __init__(self, phy:nx.DiGraph, slices_set:list[list[nx.DiGraph]], name: str | None = None) -> None:
+        self.name = name if name is not None else f"graphmapping_{uuid.uuid4().hex[:8]}"
         self.PHY = phy
         self.SLICES_SET = slices_set
         self.solution = None

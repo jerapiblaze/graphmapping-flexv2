@@ -55,18 +55,22 @@ def Main(config:dict):
             raise Exception(f"[Invalid config] SFCSET/MODE={SFC_MODE[0]}")
     
     PHY = phygraphGenerator.Generate()
-    for i in range(PROBLEM_COUNT):
+    for prob_idx in range(PROBLEM_COUNT):
         if not KEEPPHY:
             PHY = phygraphGenerator.Generate()
-        SFC = sfcgraphGenerator.Generate()
+
         SFC_SET = []
-        for i in range(config["SFCSET"]["SFCCOUNT"]):
+        for sfc_idx in range(config["SFCSET"]["SFCCOUNT"]):
             if not config["SFCSET"]["KEEPSFC"]:
                 SFC = sfcgraphGenerator.Generate()
             else:
                 SFC = GraphClone(SFC)
             SFC_SET.append(SFC)
+
         problem = SliceMappingProblem(phy=PHY, slices_set=SFC_SET)
+
+        # tên 001..100 theo PROBLEM_COUNT
+        problem.name = f"{PROBLEM_SETNAME}_{prob_idx+1:03d}"
         savepath = os.path.join(OUTPUT_PATH, f"{problem.name}.pkl.gz")
         SaveProblem(path=savepath, problem=problem)
 
@@ -78,7 +82,7 @@ def MpWorker(queue: mp.Queue):
 
 if __name__=="__main__":
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("-c", "--config", default="./configs/ProblemSettings/dummy.yaml")
+    argparser.add_argument("-c", "--config", default="/home/stu1/Code/graphmapping-flexv2/configs/ProblemSettings/dummy_multi.yaml")
     args = argparser.parse_args()
     config_list = ConfigParser(args.config)
     q = IterToQueue(config_list)

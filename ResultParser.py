@@ -24,8 +24,8 @@ def MpWorker(queue:mp.Queue, result_file:str):
     pass
 
 def Main():
-    solved_problem_paths = RecurseListDir("./data/solutions", ["*.pkl.gz"])
-    result_file = os.path.join(f"./data/results/{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
+    solved_problem_paths = RecurseListDir("./data/multi_1/solutions", ["*.pkl.gz"])
+    result_file = os.path.join(f"./data/multi_1/results/{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
     with open(result_file, "wt") as f:
         f.write(f"setname,solvername,problemname,status,solutionstatus,objvalue,runtime\n")
     q = IterToQueue(solved_problem_paths)

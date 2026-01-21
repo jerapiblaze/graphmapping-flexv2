@@ -91,7 +91,7 @@ def RLSolveQLCLCMultiWorker(
         checkpoint_path = None
         for f in os.listdir(weight_dir):
             if (
-                f.startswith(f"C135_COS_30_{problem_id}_")
+                f.startswith(f"C135_TA2_40_{problem_id}_")
                 and f.endswith(".pkl.gz")
             ):
                 checkpoint_path = os.path.join(weight_dir, f)
